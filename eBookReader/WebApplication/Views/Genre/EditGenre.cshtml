@@ -1,0 +1,43 @@
+﻿@*////////////////////////////////////////////////////////////////
+// EditGenre.cshtml - View to edit the existing values for      //
+//                   given object of genre class                //
+// Omkar Buchade, CSE686 - Internet Programming, Spring 2019    //
+////////////////////////////////////////////////////////////////*@
+@model WebApplication.Models.Genre
+@{
+    ViewData["Title"] = "Edit Genre";
+}
+
+<h1>Edit Genre</h1>
+
+<h3>Edit Genre Name</h3>
+<br />
+
+<div class="EditGenre">
+    <form asp-action="EditGenre">
+        <div>
+            <input asp-for="GenreName" class="formControl" placeholder=" Enter Genre name" />
+            <span asp-validation-for="GenreName" class="text-danger"></span>
+
+        </div>
+        <div>
+            <input type="submit" value="Edit" class="btnIdentity" />
+        </div>
+    </form>
+</div>
+
+<br />
+<br />
+<div id="paddingSpacer">
+    <a asp-action="Index">Back to Genre list</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+
+
+
+
+

@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "ConsoleClient": {
+      "commandName": "Project",
+      "commandLineArgs": "https://localhost:44305/api/Files"
+    }
+  }
+}

@@ -1,0 +1,66 @@
+﻿@*/////////////////////////////////////////////////////////////
+// AddBook.cshtml - View to add books into the database      //
+//                                                           //
+// Omkar Buchade, CSE686 - Internet Programming, Spring 2019 //
+///////////////////////////////////////////////////////////////*@
+
+@model WebApplication.Models.Book
+@{
+    ViewData["Title"] = "Add eBook";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Add eBook</h1>
+
+
+<br />
+<div>
+    <h4>Enter eBook details</h4>
+    <form asp-action="AddBook">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="BookID" />
+        <div>
+            <input asp-for="Title" class="formControl" placeholder="Enter eBook title" />
+            <span asp-validation-for="Title" class="text-danger"></span>
+
+        </div>
+        <div>
+            <input asp-for="Author" class="formControl" placeholder="Enter eBook Author" />
+            <span asp-validation-for="Author" class="text-danger"></span>
+
+        </div>
+        <div>
+            <input asp-for="Isbn" class="formControl" placeholder="Enter eBook ISBN number" />
+            <span asp-validation-for="Isbn" class="text-danger"></span>
+
+        </div>
+        <br />
+        <div>
+            <span id="topPadding"><label asp-for="Private" id="font"></label></span>
+            <span><input asp-for="Private" id="checkBox" /></span>
+            <div id="font">Leave unchecked for public book</div>
+        </div>
+        <br />
+        <div>
+            <input asp-for="BookName" type="file" class="fileControl" placeholder="Select eBook file" />
+            <span asp-validation-for="BookName" class="text-danger"></span>
+
+        </div>
+        <div>
+            <input type="submit" value="Add" class="btnIdentity" />
+        </div>
+    </form>
+
+</div>
+
+<br />
+<br />
+<div id="paddingSpacer">
+    <a asp-action="Index">Back to Genre List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+

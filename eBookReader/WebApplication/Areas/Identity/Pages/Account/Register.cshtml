@@ -1,0 +1,54 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+<h1>Sign Up</h1>
+<br />
+<div class="row">
+    <div class="column">
+        <div class="signUp">
+            <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                    @*<label asp-for="Input.Name"></label>*@
+                    <input asp-for="Input.Name" placeholder="Your Full Name" class="formControl" />
+                    @*<span asp-validation-for="Input.Name" class="text-danger"></span>*@
+                </div>
+                <br />
+                <div class="form-group">
+                    @*<label asp-for="Input.Email"></label>*@
+                    <input asp-for="Input.Email" placeholder="Your Email" class="formControl" />
+                    @*<span asp-validation-for="Input.Email" class="text-danger"></span>*@
+                </div>
+                <br />
+                <div class="form-group">
+                    @*<label asp-for="Input.Password"></label>*@
+                    <input asp-for="Input.Password" placeholder="Password" class="formControl" />
+                    @*<span asp-validation-for="Input.Password" class="text-danger"></span>*@
+                </div>
+                <br />
+                <div class="form-group">
+                    @*<label asp-for="Input.ConfirmPassword"></label>*@
+                    <input asp-for="Input.ConfirmPassword" placeholder="Confirm Password" class="formControl" />
+                    @*<span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>*@
+                </div>
+                <button type="submit" class="btnIdentity">Register</button>
+            </form>
+            <p>
+                   <br />
+                Already regsistered? <a asp-area="Identity" asp-page="/Account/Login">Login here</a>
+
+            </p>
+        </div>
+    </div>
+    <div class="column">
+        <img src="~/images/signup-image.jpg" alt="Laptop Image"/>
+    </div>
+</div>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>@ViewData["Title"] - eBook Reader</title>
+
+    <link rel="stylesheet" href="~/css/mainPage.css" asp-append-version="true" />
+
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    </environment>
+</head>
+<body>
+    <grid-container>
+
+        <div class="header">
+            <header>
+                <span id="home"> <a asp-area="" asp-controller="Home" asp-action="Index" id="Home">Home</a> </span>
+                @*<span id="spacer"></span>*@
+                <span id="eBook"> <a asp-area="" asp-controller="Home" asp-action="Index" id="EBook">eBook Reader</a></span>
+                <partial name="_LoginPartial" />
+            </header>
+        </div>
+
+        <div class="nav">
+            <table class="navList">
+                <tr>
+                    <td>
+                        <img src="~/images/public-book.jpg" width="50" height="40" alt="Public Book" />
+                    </td>
+                    <td>
+                        &nbsp; <a asp-area="" asp-controller="Genre" asp-action="Index">List eBooks</a>
+                    </td>
+                </tr>
+
+                @*<tr>
+                    <td>
+                        <img src="~/images/private-book.jpg" width="50" height="40" alt="Public Book" />
+                    </td>
+                    <td>
+                        &nbsp;<a asp-area="" asp-controller="Genre" asp-action="IndexPrivate"> Private eBooks</a>
+                    </td>
+                </tr>*@
+
+                @*<tr>
+                    <td>
+                        <img src="~/images/google-drive.png" width="40" height="40" alt="Public Book" />
+                    </td>
+                    <td>
+                        <a href="#">Google Drive</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="~/images/public-book.jpg" width="40" height="40" alt="Public Book" />
+                    </td>
+                    <td>
+                        <a href="#">DropBox</a>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <img src="~/images/public-book.jpg" width="40" height="40" alt="Public Book" />
+                    </td>
+                    <td>
+                        <a href="#">OneDrive</a>
+                    </td>
+                </tr>*@
+
+            </table>
+        </div>
+
+        <div class="main">
+            <div>
+                @*<partial name="_CookieConsentPartial" />*@
+                <main role="main" class="pb-3">
+                    @RenderBody()
+                </main>
+            </div>
+        </div>
+
+        <div class="footer">
+            <span id="About"><a id="About" href="~/about.html">About</a></span>
+            <span id="Privacy"> <a id="Privacy" href="~/privacy.html">Privacy</a></span>
+            <span id="Help"><a id="Help" href="~/help.html">Help</a></span>
+            <span id="Contact"><a id="Contact" href="~/contact.html">Contact</a></span>
+        </div>
+    </grid-container>
+    @RenderSection("Scripts", required: false)
+
+</body>
+</html>

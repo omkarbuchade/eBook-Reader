@@ -1,0 +1,54 @@
+﻿@*////////////////////////////////////////////////////////////////
+// GenreDetails.cshtml - View to display the Genre details      //
+//                        for the given genre object            //
+// Omkar Buchade, CSE686 - Internet Programming, Spring 2019    //
+////////////////////////////////////////////////////////////////*@
+@model WebApplication.Models.Genre
+
+@{
+    ViewData["Title"] = "Genre Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<h1>Genre Details</h1>
+<div>
+    <dl class="row">
+        <dt>
+            @Html.Label("Genre Name: ")
+            @Html.Label(Model.GenreName)
+        </dt>
+    </dl>
+</div>
+<div>
+
+    @if (Model.Books.Count != 0)
+    {
+        <h4 style="margin-bottom: 10px;">eBooks</h4>
+    }
+    <ul>
+        @foreach (var bk in Model.Books)
+        {
+            <li style="padding:0px 25px; margin:0px;">
+                @Html.Label(bk.Title)
+                <i>
+                    by @Html.Label(bk.Author)
+                </i>
+            </li>
+        }
+    </ul>
+</div>
+<div style="height: 10px;"></div>
+
+<div style="height: 10px;"></div>
+<div>
+    @if (User.IsInRole("Admin"))
+    {
+        <a asp-action="EditGenre" asp-route-id="@Model.ID">Edit</a> <span> | </span>
+    }
+    <a asp-action="Index">Back to genre list</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

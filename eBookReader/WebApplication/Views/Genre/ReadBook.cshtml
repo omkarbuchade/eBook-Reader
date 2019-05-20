@@ -1,0 +1,68 @@
+﻿@*////////////////////////////////////////////////////////////////
+// ReadBook.cshtml - View to read a selected book in an         //
+//                   iFrame. Also provide functionality to      //
+//                   add comments and view them                 //
+//                                                              //
+// Omkar Buchade, CSE686 - Internet Programming, Spring 2019    //
+////////////////////////////////////////////////////////////////*@
+@model WebApplication.Models.Book
+@{
+    ViewData["Title"] = "Read eBook";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (Model.Private && !User.Identity.IsAuthenticated)
+{
+    <p>
+        Please
+        <a asp-area="Identity" asp-page="/Account/Login">Login</a> to view and read private eBooks...
+    </p>
+}
+else
+{
+    <h1 id="centerID">Reading @Model.Title</h1>
+    <script src="~/js/iframe.js"></script>
+    <div id="centerID">
+        <button type="button" onclick="plus()">Zoom in</button>
+        <button type="button" onclick="minus()">Zoom out</button>
+    </div>
+    <br />
+    <div id="IFrameDiv">
+        <embed id="IFrame" src="@("/FileStorage/" + Model.BookName + "#view=FitH&toolbar=0")" width="800" height="600" />
+
+    </div>
+    <br />
+    <br />
+
+    @if (User.Identity.IsAuthenticated || User.IsInRole("Admin"))
+    {
+        <table class="table" id="commentTable">
+            <tr>
+                <td id="hoverEffect"><a asp-action="BookComments" asp-route-id="@Model.BookID">Comments</a></td>
+                <td id="hoverEffect"><a asp-action="AddComment" asp-route-id="@Model.BookID">Add Comments</a></td>
+            </tr>
+        </table>
+    }
+    else
+    {
+        <div id="spacer">
+            Please
+            <a asp-area="Identity" asp-page="/Account/Login">Login</a> to start commenting on this eBook...
+        </div>
+    }
+}
+<br />
+<br />
+@if (Model.Private)
+{
+
+    <div id="paddingSpacer">
+        <a asp-action="BookDetPrivate" asp-route-id=@Model.GenreID>Return to  eBook list</a>
+    </div>
+}
+else
+{
+    <div id="paddingSpacer">
+        <a asp-action="BookDet" asp-route-id=@Model.GenreID>Return to  eBook list</a>
+    </div>
+}

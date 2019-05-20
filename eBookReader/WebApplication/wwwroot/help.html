@@ -1,0 +1,70 @@
+﻿<!--//////////////////////////////////////////////////////////////////
+// help.html - static page to display how to navigate the website   //
+//                                                                  //
+// Omkar Buchade, CSE686 - Internet Programming, Spring 2019        //
+///////////////////////////////////////////////////////////////////-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Help</title>
+    <link rel="stylesheet" href="css/mainPage.css" />
+
+</head>
+<body>
+    <grid-container>
+        <div class="header">
+            <header>
+                <span id="home"> <a id="Home" href="/">Home</a> </span>
+                <span id="eBook"> <a id="EBook" href="/">eBook Reader</a></span>
+
+                <span id="Register">
+                    <a id="Register" href="/Identity/Account/Register">Register</a>
+                </span>
+                <span id="LoginLogout">
+                    <a id="Login" href="/Identity/Account/Login">Login</a>
+                </span>
+
+            </header>
+        </div>
+
+        <div class="nav">
+            <table class="navList">
+                <tr>
+                    <td>
+                        <img src="/images/public-book.jpg" width="50" height="40" alt="Public Book" />
+                    </td>
+                    <td>
+                        &nbsp; <a href="/Genre">List eBooks</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="main">
+            <div class="container">
+                <h1>Navigating the Website</h1>
+                <ul>
+                    <li>The header bar can be used to navigate to the homepage, to login as well sign up page.</li>
+                    <li>The navigation panel on the left provides links for navigating to the list of available public and private eBooks.</li>
+                    <li>Public eBooks can be viewed by any user whereas, to view private eBooks you must sign in into your account.</li>
+                    <li>The website also allows the authenticated user to comment of the eBook they are reading. The coments are only visible to the user who supplied the comment and to the Admin.</li>
+                    <li>Only the admin has the the privilege to upload, edit or delete the eBooks.</li>
+                    <li>The footer bar holds links to other important static pages like the help, privacy, contact and the About page.</li>
+                    <li>
+                        Need more help navigating the website? Feel free to contact the developer from the
+                        <a href="contact.html"> Contact </a> page!
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer">
+            <span id="About"><a id="About" href="about.html">About</a></span>
+            <span id="Privacy"> <a id="Privacy" href="privacy.html">Privacy</a></span>
+            <span id="Help"><a id="Help" href="help.html">Help</a></span>
+            <span id="Contact"><a id="Contact" href="contact.html">Contact</a></span>
+        </div>
+    </grid-container>
+
+</body>
+</html>

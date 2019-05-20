@@ -1,0 +1,111 @@
+﻿@*////////////////////////////////////////////////////////////////
+// BookDetPrivate.cshtml - View to display the private book     //
+//                  details for the selected genre              //
+// Omkar Buchade, CSE686 - Internet Programming, Spring 2019    //
+////////////////////////////////////////////////////////////////*@
+@model IEnumerable<WebApplication.Models.Book>
+
+@{
+    ViewData["Title"] = "books";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (!User.Identity.IsAuthenticated)
+{
+    <div>
+        <br />
+        <br />
+        <br />
+        <div>
+            Please <a asp-area="Identity" asp-page="/Account/Register">Register</a>  or
+            <a asp-area="Identity" asp-page="/Account/Login">Login</a> to view and read eBooks.
+        </div>
+    </div>
+}
+
+else
+{
+    <h1>List of private eBooks</h1>
+
+    //@if (Model.ToList<Book>().Count == 0)
+    @if (Model.Where(s => s.Private.Equals(true)).ToList<Book>().Count == 0)
+    {
+        <br />
+        <h4>No private eBooks to display.</h4>
+        <br />
+    }
+    else
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Title)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Author)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Isbn)
+                    </th>
+
+                    <th></th>
+
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <th></th>
+                        <th></th>
+                    }
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    @if (item.Private)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Title)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Author)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Isbn)
+                            </td>
+                            <td>
+                                <a asp-action="ReadBook" asp-route-id="@item.BookID"> Read Book </a>
+                            </td>
+
+                            <td>
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    <a asp-action="EditBook" asp-route-id="@item.BookID"> Edit Book </a>
+                                }
+                            </td>
+
+                            <td>
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    <a asp-action="DeleteBook" asp-route-id="@item.BookID"> Delete Book </a>
+                                }
+                            </td>
+
+
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    }
+}
+<br />
+<br />
+<div>
+    <a asp-action="Index">Back to Genre List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

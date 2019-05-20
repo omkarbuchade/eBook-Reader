@@ -1,0 +1,41 @@
+﻿@*////////////////////////////////////////////////////////////////
+// AddComment.cshtml - View to accept fields in the comments    // 
+                       class                                    //
+//                                                              //
+// Omkar Buchade, CSE686 - Internet Programming, Spring 2019    //
+////////////////////////////////////////////////////////////////*@
+@model WebApplication.Models.BookComment
+@{
+    ViewData["Title"] = "Add Comment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Add Comment</h1>
+<br />
+<div>
+    <h4>Enter comment</h4>
+    <form asp-action="AddComment">
+        <input type="hidden" asp-for="BookCommentID" />
+        <div>
+            <input asp-for="Comment" class="formControl" placeholder="Enter your comment " />
+            <span asp-validation-for="Comment" class="text-danger"></span>
+
+        </div>
+        <div>
+            <input type="submit" value="Add" class="btnIdentity" />
+        </div>
+    </form>
+
+</div>
+
+<br />
+<br />
+<div id="paddingSpacer">
+    <a asp-action="ReadBook" asp-route-id=@Model.BookID>Return to reading book</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+

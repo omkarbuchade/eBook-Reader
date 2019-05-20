@@ -1,0 +1,40 @@
+﻿@*////////////////////////////////////////////////////////////////
+// AddGenre.cshtml - View to accept fields in the Genre class   //
+//                                                              //
+// Omkar Buchade, CSE686 - Internet Programming, Spring 2019    //
+////////////////////////////////////////////////////////////////*@
+
+@model WebApplication.Models.Genre
+@{
+    ViewData["Title"] = "Add Genre";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Add Genre</h1>
+<br />
+<div class="addGenre">
+    <form asp-action="AddGenre">
+        @*<div asp-validation-summary="ModelOnly"></div>*@
+        <div class="form-group">
+            <input asp-for="GenreName" class="formControl" placeholder=" Enter Genre name" />
+            <span asp-validation-for="GenreName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Create" class="btnIdentity" />
+        </div>
+    </form>
+</div>
+
+<br />
+<br />
+<div id="paddingSpacer">
+    <a asp-action="Index">Back to Genres list</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+
+
+

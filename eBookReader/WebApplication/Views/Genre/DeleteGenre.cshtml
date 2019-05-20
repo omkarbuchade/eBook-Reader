@@ -1,0 +1,21 @@
+﻿@*////////////////////////////////////////////////////////////////
+// BookDetPrivate.cshtml - View to render when user is trying   //
+//                         delete genre when it has books       //
+// Omkar Buchade, CSE686 - Internet Programming, Spring 2019    //
+////////////////////////////////////////////////////////////////*@
+@{
+    ViewData["Title"] = "DeleteGenre";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Delete Genre</h1>
+<div>
+    <p>
+        The genre is not empty. There are books associated with it. Please delete all books first to remove this genre.
+    </p>
+</div>
+<br />
+<br />
+<div id="paddingSpacer">
+    <a asp-action="Index">Back to Genre List</a>
+</div>

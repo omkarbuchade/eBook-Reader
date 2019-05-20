@@ -1,0 +1,80 @@
+﻿@*////////////////////////////////////////////////////////////////
+// Index.cshtml - View to display the existing values for       //
+//                   objects in the genres DBset                //
+// Omkar Buchade, CSE686 - Internet Programming, Spring 2019    //
+////////////////////////////////////////////////////////////////*@
+@model IEnumerable<WebApplication.Models.Genre>
+
+
+<h1>List of Genres</h1>
+<br />
+@if (User.IsInRole("Admin"))
+{
+    <p>
+        <a asp-action="AddGenre">Add new genre</a>
+    </p>
+}
+@if (Model.ToList<Genre>().Count == 0)
+{
+    <br />
+    <h4>No genres to display. Please add genres.</h4>
+    <br />
+}
+else
+{
+    <table class="table">
+        @*<thead>
+                <tr>
+                    <th>
+                        @Html.DisplayName("Genres")
+                    </th>
+
+                    <th>
+                        @Html.DisplayName("Abc")
+                    </th>
+                    <th>
+                        @Html.DisplayName("Xyz")
+                    </th>
+                </tr>
+            </thead>*@
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GenreName)
+                    </td>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <td id="hoverEffect">
+                            <a asp-action="EditGenre" asp-route-id="@item.ID">Edit genre Info</a>
+                        </td>
+                    }
+                    <td id="hoverEffect">
+                        <a asp-action="GenreDetails" asp-route-id="@item.ID">Genre Details</a>
+                    </td>
+                    @*@if (User.IsInRole("Admin"))
+                        {
+                            <td id="hoverEffect">
+                                <a asp-action="AddBook" asp-route-id="@item.ID">Add eBook</a>
+                            </td>
+                        }*@
+                    <td id="hoverEffect">
+                        <a asp-action="BookDet" asp-route-id="@item.ID">View Public eBooks</a>
+                    </td>
+
+                    <td id="hoverEffect">
+                        <a asp-action="BookDetPrivate" asp-route-id="@item.ID">View Private eBooks</a>
+                    </td>
+
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <td id="hoverEffect">
+                            <a asp-action="DeleteGenre" asp-route-id="@item.ID">Delete Genre</a>
+                        </td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+}

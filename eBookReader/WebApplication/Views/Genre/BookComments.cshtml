@@ -1,0 +1,88 @@
+﻿@*////////////////////////////////////////////////////////////////
+// AddGenre.cshtml - View to display the comments for a         //
+//                   selected book                              //
+// Omkar Buchade, CSE686 - Internet Programming, Spring 2019    //
+////////////////////////////////////////////////////////////////*@
+@model IEnumerable<WebApplication.Models.BookComment>
+@{
+    ViewData["Title"] = "Book Comments";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Book Comments</h1>
+@if (!User.Identity.IsAuthenticated)
+{
+    <br />
+    <h4>Please login to view comments here...</h4>
+    <br />
+}
+else
+{
+    @if (Model.ToList<BookComment>().Count == 0)
+    {
+        <br />
+        <h4>No comments for this eBooks. Please add comments to view them here.</h4>
+        <br />
+    }
+
+    else
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th> @Html.DisplayName("Username")</th>
+                    <th>
+                        @Html.DisplayName("Date")
+                    </th>
+                    <th>
+                        @Html.DisplayName("Comment")
+                    </th>
+                    <th>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    @if (User.IsInRole("Admin") || User.Identity.Name == item.Username)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Username)
+                            </td>
+                            <td>
+                                @Html.DisplayName(item.Date.ToLongDateString())
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Comment)
+                            </td>
+
+                            <td>
+                                <a asp-action="DeleteComment" asp-route-id="@item.BookCommentID">Delete Comment</a>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    }
+}
+
+<div id="paddingSpacer">
+    <br />
+    <br />
+    @foreach (var item in Model)
+    {
+        <a asp-action="ReadBook" asp-route-id="@item.BookID">Return to reading book</a>
+        break;
+    }
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+
+
+
+

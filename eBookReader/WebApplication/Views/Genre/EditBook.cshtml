@@ -1,0 +1,53 @@
+﻿@*////////////////////////////////////////////////////////////////
+// EditBook.cshtml - View to edit the existing values for       //
+//                   given object of Book class                 //
+// Omkar Buchade, CSE686 - Internet Programming, Spring 2019    //
+////////////////////////////////////////////////////////////////*@
+@model WebApplication.Models.Book
+
+@{
+    ViewData["Title"] = "Edit eBook";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit eBook</h1>
+<br />
+<br />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditBook">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="BookID" />
+            <div>
+                <input asp-for="Title" class="formControl" placeholder="Book title" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div>
+                <input asp-for="Author" class="formControl" placeholder="Book Author" />
+                <span asp-validation-for="Author" class="text-danger"></span>
+            </div>
+            <div>
+                <input asp-for="Isbn" class="formControl" placeholder="ISBN" />
+                <span asp-validation-for="Isbn" class="text-danger"></span>
+            </div>
+            <div>
+                <span id="topPadding"><label asp-for="Private" id="font"></label></span>
+                <span><input asp-for="Private" id="checkBox" /></span>
+                <div id="font">Leave unchecked for public book</div>
+            </div>
+            <div>
+                <input type="submit" value="Edit" class="btnIdentity" />
+            </div>
+        </form>
+    </div>
+</div>
+<br />
+<br />
+<div>
+    <a asp-action="Index">Back to Genre List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,268 @@
+﻿/*//////////////////////////////////////////////////////////////
+// mainpage.css - stylesheet for eBook reader                 //
+//                                                            //
+// Omkar Buchade, CSE686 - Internet Programming, Spring 2019  //
+//////////////////////////////////////////////////////////////*/
+body {
+    padding: 10%;
+    font-family: Tahoma, sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: rgb(8, 93, 246);
+}
+
+a:active {
+    color: #cc0000;
+}
+a:hover{
+    text-decoration: underline;
+}
+#Home, #EBook, #LoginName, #Register, #Login, #About, #Contact, #Privacy, #Help, .navList a {
+    text-decoration: none;
+    color: black;
+}
+#home:hover, #eBook:hover, #About:hover, #Contact:hover, #Privacy:hover, #Help:hover {
+    text-shadow: 20px 12px 2px black;
+}
+
+.LogoutBtn {
+    border: none;
+    background-color: none;
+}
+
+.nav {
+    grid-area: nav;
+    /* border: 0.1em solid #cc0000; */
+    vertical-align: top;
+    padding: 0.2em 0.4em;
+    background-image: linear-gradient(to left, #f5cb7cb7, white );
+    /* background-image: radial-gradient(circle, #f5cb7cb7, white ); */
+    overflow: auto;
+    text-overflow: ellipsis;
+}
+
+
+.main {
+    font-family: Tahoma;
+    /*background-color: cornsilk;*/
+    color: black;
+    grid-area: main;
+    border: 0.1em solid #cc0000;
+    padding: 2%;
+    padding-left: 5%;
+    /*background-image: linear-gradient(to bottom,rgba(79, 187, 230, 0.479),white ); */
+    overflow: auto;
+    text-overflow: ellipsis;
+
+}
+
+.header {
+    grid-area: header;
+    text-align: center;
+    font-size: large;
+    padding: 0.3em;
+    padding-top: 0.2em;
+    /* background-image: linear-gradient(to left, #f5cb7cb7, white   ); */
+    background-image: radial-gradient(circle, #f5cb7cb7, white );
+
+}
+
+
+.footer {
+    grid-area: footer;
+    text-align: center;
+    /* border: 0.1em solid #cc0000; */
+    padding: 0.3em;
+    background-color: #efefef;
+
+
+}
+
+grid-container {
+    display: grid;
+     /*grid-gap: 0.2em;*/ 
+    /*---- define column widths and row heights ----*/
+    grid-template-columns: 15% 1fr;
+    grid-template-rows: 3em 1fr 2em;
+    /*---- layout the areas ----*/
+    grid-template-areas: "header header" "nav main" "footer footer";
+    position: absolute;
+    top: 0em;
+    bottom: 0em;
+    left: 0.0em;
+    right: 0.0em;
+}
+
+#Register, #LoginLogout {
+    padding-top:0.5%;
+    font-size:medium;
+    float: right;
+    padding-right:2%;
+}
+
+#home {
+    padding-top: 0.5%;
+    float: left;
+    font-size: medium;
+    padding-left: 2%;
+}
+
+#eBook a {
+    font-size: 1.5em;
+}
+
+#spacer {
+    padding-right: 40%;
+}
+
+#paddingSpacer {
+    padding-left: 1em;
+}
+
+#About, #Privacy, #Help, #Contact {
+    padding-left: 1%;
+}
+
+#home:hover, #Register:hover, #LoginLogout:hover, #eBook:hover, #About:hover, #Privacy:hover, #Help:hover, #Contact:hover, .navList a:hover{
+    text-shadow: 2px 2px 5px gray;
+}
+
+#centerID {
+    text-align: center;
+}
+#IFrameDiv, #commentTable {
+    text-align: center;
+}
+#IFrame {
+    border: 2px solid black;
+}
+
+.form-inline {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+}
+.form-inline button {
+    padding-top: 0.7%;
+    font-size: medium;
+    background-color: inherit;
+    border: none;
+    color: inherit;
+}
+.form-inline button:hover {
+    text-shadow: 2px 2px 5px gray;
+}
+    .form-inline button:active {
+        border: none;
+    }
+
+
+.formControl {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-size: medium;
+    height: 2em;
+    width: 20em;
+    border: none;
+    background-color: inherit;
+    border-bottom: 0.1em solid gray;
+}
+
+.fileControl {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-size: medium;
+    height: 2em;
+    width: 20em;
+    border: none;
+    background-color: inherit;
+}
+
+input:focus {
+    /*background-color: lightblue;*/
+    outline: none; 
+    border-bottom: 0.2em groove black;
+}
+
+.btnIdentity {
+    margin-top: 2em;
+    margin-left: 1em;
+    font-size: large;
+    padding: 15px 32px;
+    border-radius: 4px;
+    background-color: rgba(18, 82, 231, 0.63);
+    border: none;
+    color: white;
+}
+.btnIdentity:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.signUp, .LogIn {
+    padding-left: 8%;
+}
+
+.column {
+    float: left;
+    width: 50%;
+}
+
+.navList {
+    list-style-type: none;
+    padding-left: 10%;
+    padding-top: 10%;
+}
+.navList tr {
+    height: 5%;
+}
+
+.table {
+    padding: 25px;
+    border-collapse: collapse;
+}
+
+.table th {
+    text-align: left;
+    padding-left: 2.5em;
+    border-bottom: 1px solid #ddd;
+    background-color: #4CAF50;
+    color: white;
+    height: 2.5em;
+}
+.table td, .table tr {
+    border-bottom: 1px solid #ddd;
+    padding-left: 2.5em;
+    background-color: inherit;
+    width: 15%;
+    height: 2.5em;
+    color: black;
+}
+
+.table #hoverEffect:hover {
+    /*background-image: radial-gradient(circle, rgba(203, 198, 198, 0.70), white );*/
+    background-image: linear-gradient(to right, rgba(203, 198, 198, 0.70), white );
+}
+
+#checkBox {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-size: medium;
+    height: 1.3em;
+    width: 1.3em;
+}
+
+#font {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+.container {
+    
+    padding-left: 5%;
+    padding-right: 20%;
+    text-align: justify;
+}
+.container ul li {
+    padding-top: 1em;
+}
+
+
+
